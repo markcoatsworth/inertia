@@ -1,23 +1,23 @@
 /*** GENERAL CLASSES ***/
 
-.clear {	
-	clear: both; 
-	float: none;
+.clear {    
+    clear: both; 
+    float: none;
 }
 .column_narrow {
-	width: 220px;
+    width: 220px;
 }
 .column_wide {
-	width: 660px;
+    width: 660px;
 }
 .hidden {
-	display: none;
+    display: none;
 }
 .left {
-	float: left;
+    float: left;
 }
 .right {
-	float: right;
+    float: right;
 }
 
 
@@ -25,57 +25,65 @@
 /*** TYPOGRAPHY ***/
 
 body {
-	font-family: 'Lucida Grande', Arial, sans-serif;
+    font-family: 'Lucida Grande', Arial, sans-serif;
+    line-height: 1;
+    padding: 0;
 }
 
 a {
-	color: #666;
-	text-decoration: none;
+    color: #666;
+    text-decoration: none;
 }
 
 a.titlelink {
-	color: #eee;
+    color: #eee;
 }
 
 a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 a.titlelink:hover {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 h1 {
-	font-size: 32px;
-	margin: 0 0 20px 0;
-	text-align: center;
-	text-transform: uppercase;
+    font-size: 32px;
+    margin: 0 0 20px 0;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 h2 {
-	font-size: 24px;
-	margin: 10px 0 30px 0;
-	text-transform: uppercase;
+    color: #fff;
+    font-size: 26px;
+    margin: 10px 0 30px 0;
+    text-transform: uppercase;
 }
 
 h3 {
-	font-size: 20px;
-	margin: 20px 0;
-	text-transform: uppercase;
+    color: #fff;
+    font-size: 20px;
+    margin: 20px 0;
+    text-transform: uppercase;
 }
 
 h4 {
-	font-size: 16px;
-	margin: 15px 0;
-	text-transform: uppercase;
+    font-size: 16px;
+    margin: 15px 0;
+    text-transform: uppercase;
+}
+
+li {
+    list-style-type: none;
 }
 
 div#header {
-	color: #fff;
+    color: #fff;
 }
 
 div#container {
-	color: #eee;
+    color: #eee;
 }
 
 
@@ -83,41 +91,41 @@ div#container {
 /*** LAYOUT ***/
 
 body {
-	background: #000 url('/img/body_background.gif') repeat;
+    background: #000 url('/img/body_background.gif') repeat;
 }
 
 /*** HEADER BLOCK ***/
 
 div#header {
-	background: #000 url('/img/header_background.gif') repeat;
-	height: 238px;
-	margin: 0 auto;
-	padding: 0;
-	text-align: center;
-	width: 960px;
-	-moz-box-shadow: 0px 12px 12px #000;
-	-webkit-box-shadow: 0px 12px 12px #000;
-	box-shadow: 0px 12px 12px #000;
+    background: #000 url('/img/header_background.gif') repeat;
+    height: 238px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: 960px;
+    -moz-box-shadow: 0px 12px 12px #000;
+    -webkit-box-shadow: 0px 12px 12px #000;
+    box-shadow: 0px 12px 12px #000;
 }
 
 div#header a.home {
-	background: url('/img/inertia_logo_xxv.png') no-repeat;
-	display: block;
-	height: 208px;
-	margin: 0 auto;
-	position: relative;
-	top: 15px;
-	width: 336px;
+    background: url('/img/inertia_logo_xxv.png') no-repeat;
+    display: block;
+    height: 208px;
+    margin: 0 auto;
+    position: relative;
+    top: 15px;
+    width: 336px;
 }
 
 div#header div.mascot {
-	background: url('/img/header_mascot.png') no-repeat;
-	display: block;
-	height: 103px;
-	left: 880px;
-	position: relative;
-	top: -230px;
-	width: 75px;
+    background: url('/img/header_mascot.png') no-repeat;
+    display: block;
+    height: 103px;
+    left: 880px;
+    position: relative;
+    top: -230px;
+    width: 75px;
 
 }
 
@@ -125,67 +133,67 @@ div#header div.mascot {
 /*** NAVIGATION BLOCK ***/
 
 div#navigation {
-	background: #000 url('/img/navigation_background.gif') no-repeat;
-	height: 88px;
-	margin: 0 auto;
-	width: 960px;
-	-moz-box-shadow: 0px 12px 12px #000;
-	-webkit-box-shadow: 0px 12px 12px #000;
-	box-shadow: 0px 12px 12px #000;
+    background: #000 url('/img/navigation_background.gif') no-repeat;
+    height: 88px;
+    margin: 0 auto;
+    width: 960px;
+    -moz-box-shadow: 0px 12px 12px #000;
+    -webkit-box-shadow: 0px 12px 12px #000;
+    box-shadow: 0px 12px 12px #000;
 }
 
 div#navigation ul {
-	background: url('/img/navigation_ul_background.png') no-repeat;
-	height: 80px;
-	margin: 0 auto;
-	padding: 10px 0 0 100px;
-	width: 960px;
+    background: url('/img/navigation_ul_background.png') no-repeat;
+    height: 75px;
+    margin: 0 auto;
+    padding: 20px 0 0 100px;
+    width: 960px;
 }
 
 div#navigation ul li {
-	float: left;
-	height: 42px;
+    float: left;
+    list-style: none;
 }
 
 div#navigation ul li a {
-	color: #000;
-	display: block;
-	font-family: Impact, Arial, sans-serif;
-	font-size: 32px;
-	padding: 10px 30px;	
-	text-decoration: none;
+    color: #000;
+    display: block;
+    font-family: Impact, Arial, sans-serif;
+    font-size: 32px;
+    padding: 2px 30px;    
+    text-decoration: none;
 }
 
 div#navigation ul li a:hover {
-	color: #ac4f17;
+    color: #ac4f17;
 }
 
 div#navigation ul li a.facebook {
-	background: url('/img/navigation_facebook.png') no-repeat 0 10px;
-	height: 32px;
-	margin: 0 0 0 25px;
-	text-indent: 15px;
+    background: url('/img/navigation_facebook.png') no-repeat;
+    height: 50px;
+    margin: 0 0 0 25px;
+    text-indent: 15px;
 }
 
 div#navigation ul li a.instagram {
-	background: url('/img/navigation_instagram.png') no-repeat 0 10px;
-	height: 32px;
-	margin: 0 0 0 10px;
-	text-indent: 15px;
+    background: url('/img/navigation_instagram.png') no-repeat;
+    height: 50px;
+    margin: 0 0 0 10px;
+    text-indent: 15px;
 }
 
 
 /*** CONTAINER BLOCK ***/
 
 div#container {
-	background: #010000 url('/img/container_background.gif') no-repeat;
-	margin: 0 auto;
-	padding: 30px 40px 40px 40px;
-	width: 880px;
+    background: #010000 url('/img/container_background.gif') no-repeat;
+    margin: 0 auto;
+    padding: 30px 40px 40px 40px;
+    width: 960px;
 
-	-moz-box-shadow: 0px 12px 12px #000;
-	-webkit-box-shadow: 0px 12px 12px #000;
-	box-shadow: 0px 12px 12px #000;
+    -moz-box-shadow: 0px 12px 12px #000;
+    -webkit-box-shadow: 0px 12px 12px #000;
+    box-shadow: 0px 12px 12px #000;
 
 }
 
@@ -193,52 +201,52 @@ div#container {
 /*** FOOTER BLOCK ***/
 
 div#footer {
-	background-color: #010000;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px; 
-	color: #ccc;
-	font-size: 10px;
-	margin: 0 auto 300px auto;
-	padding: 0 0 30px 0;
-	text-align: center;
-	width: 960px;
-	-moz-box-shadow: 0px 12px 12px #000;
-	-webkit-box-shadow: 0px 12px 12px #000;
-	box-shadow: 0px 12px 12px #000;
+    background-color: #010000;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; 
+    color: #ccc;
+    font-size: 10px;
+    margin: 0 auto 300px auto;
+    padding: 0 0 30px 0;
+    text-align: center;
+    width: 960px;
+    -moz-box-shadow: 0px 12px 12px #000;
+    -webkit-box-shadow: 0px 12px 12px #000;
+    box-shadow: 0px 12px 12px #000;
 }
 
 
 /*** ADMINISTRATION PAGE ***/
 
 div.admin_navigation {
-	margin: 0 0 40px 0;
+    margin: 0 0 40px 0;
 }
 
 ul.admin_navigation {
-	font-size: 13px;
+    font-size: 13px;
 }
 
 ul.admin_navigation li {
-	float: left;
+    float: left;
 }
 
 ul.admin_navigation li.separator {
-	color: #999;
-	float: left;
-	margin: 0 5px;
+    color: #999;
+    float: left;
+    margin: 0 5px;
 }
 
 table.eventActions {
-	border: 0;
-	width: 100%;
+    border: 0;
+    width: 100%;
 }
 
 table.eventActions td.sortYear {
-	vertical-align: bottom;
+    vertical-align: bottom;
 }
 
 table.eventActions td.sortYear form {
-	float: right;
+    float: right;
 }
 
 
@@ -246,57 +254,59 @@ table.eventActions td.sortYear form {
 /*** BUTTONS ***/
 
 a.button {
-	display: block;
-	font-size: 12px;
-	font-weight: bold;
-	height: 20px;
-	margin: 0 20px 0 0;
-	padding: 5px 0 0 30px;
-	
+    border: 0;
+    color: #666;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0 30px 0 0;
+    padding: 5px 0 0 30px;
+    
 }
 a.add {
-	background: url('/img/icon_add.png') no-repeat;
+    background: url('/img/icon_add.png') no-repeat;
 }
 a.back {
-	background: url('/img/icon_back.png') no-repeat;
+    background: url('/img/icon_back.png') no-repeat;
 }
 a.delete {
-	background: url('/img/icon_delete.png') no-repeat;
+    background: url('/img/icon_delete.png') no-repeat;
 }
 a.edit {
-	background: url('/img/icon_edit.png') no-repeat;
+    background: url('/img/icon_edit.png') no-repeat;
 }
 a.index {
-	background: url('/img/icon_index.png') no-repeat;
+    background: url('/img/icon_index.png') no-repeat;
 }
 a.tickets {
-	background: url('/img/icon_tickets.png') no-repeat;
+    background: url('/img/icon_tickets.png') no-repeat;
 }
 a.view {
-	background: url('/img/icon_view.png') no-repeat;
-}	
+    background: url('/img/icon_view.png') no-repeat;
+}    
 
 /*** FORM BUTTONS ***/
 
 input.button {
-	border: 0px;
-	color: #666;
-	display: block;
-	font-size: 12px;
-	font-weight: bold;
-	height: 24px;
-	margin: 0 20px 0 0;
-	padding: 0 0 4px 30px;	
+    border: 0px;
+    color: #666;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 24px;
+    margin: 0 20px 0 0;
+    padding: 0 0 4px 30px;    
 }
 input.button:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 input.cancel {
-	background: url('/img/icon_cancel.png') no-repeat;
+    background: url('/img/icon_cancel.png') no-repeat;
 }
 input.save {
-	background: url('/img/icon_save.png') no-repeat;
+    background: url('/img/icon_save.png') no-repeat;
 }
 
 
@@ -304,7 +314,7 @@ input.save {
 /*** WIDGETS ***/
 
 div.search_widget {
-	margin: 10px 0;
+    margin: 10px 0;
 }
 
 
@@ -312,110 +322,110 @@ div.search_widget {
 /*** CLASS ELEMENTS ***/
 
 div.alertMessage {
-	margin: 10px 0 20px 0;
+    margin: 10px 0 20px 0;
 }
 
 div.alertMessage div.success {
-	background: url('/img/icon_success.png') no-repeat;
-	color: #00cc00;
-	font-weight: bold;
-	padding: 10px;
+    background: url('/img/icon_success.png') no-repeat;
+    color: #00cc00;
+    font-weight: bold;
+    padding: 10px;
 }
 
 div.alertMessage div.success p.item {
-	padding: 0 0 0 30px;
+    padding: 0 0 0 30px;
 }
 
 
 /*** FORMS ***/
 
 form.edit input[type=text], form.add input[type=text] {
-	width: 400px;
+    width: 400px;
 }
 form.edit div.input, form.add div.input {
-	margin: 5px 0;
+    margin: 5px 0;
 }
 form.edit textarea, form.add textarea {
-	font-family: sans-serif;
-	font-size: 12px;
-	height: 14px;
-	padding: 3px;
-	width: 400px;
+    font-family: sans-serif;
+    font-size: 12px;
+    height: 14px;
+    padding: 3px;
+    width: 400px;
 }
 
 
 
 
-	
+    
 /*** TABLES ***/
 
 table.index {
-	margin: 20px 0;
-	width: 100%;
+    margin: 20px 0;
+    width: 100%;
 }
 
 table.index tr {
-	border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
 }
 
 table.index th {
-	background-color: #333;
-	color: #ccc;
-	padding: 10px;
-	text-align: left;
-	vertical-align: middle;
+    background-color: #333;
+    color: #ccc;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
 }
 
 
 table.index td {
-	padding: 5px 10px;
-	text-align: left;
-	vertical-align: middle;
+    padding: 5px 10px;
+    text-align: left;
+    vertical-align: middle;
 }
 
 table.index th.date {
-	width: 220px;
+    width: 220px;
 }
 table.index th.options {
-	width: 200px;
+    width: 200px;
 }
 
 
 table.add, table.edit {
-	margin: 20px 0;
-	width: 100%;
+    margin: 20px 0;
+    width: 100%;
 }
 
 table.add tr, table.edit tr {
-	border-bottom: 1px solid #555;
+    border-bottom: 1px solid #555;
 }
 
 table.add th, table.edit th {
-	background-color: #333;
-	color: #ccc;
-	padding: 10px;
-	text-align: left;
-	vertical-align: middle;
-	width: 160px;
+    background-color: #333;
+    color: #ccc;
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+    width: 160px;
 }
 
 table.add td, table.edit td {
-	padding: 10px;
-	font-size: 12px;
-	text-align: left;
-	vertical-align: middle;
-	width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: middle;
+    width: 100%;
 }
 
 /*** EVENT CONTENT STYLES ***/
 
 div#EventFlyerPreview {
-	position: absolute;
-	border: 1px solid #ccc;
-	background: #333;
-	padding: 5px;
-	display: none;
-	color: #fff;
+    position: absolute;
+    border: 1px solid #ccc;
+    background: #333;
+    padding: 5px;
+    display: none;
+    color: #fff;
 }
 
 /*** EVENT LISTS ***/
@@ -424,32 +434,32 @@ ul.eventsList {
 }
 
 ul.eventsList li {
-	margin: 20px 0;
+    margin: 20px 0;
 }
 
 ul.eventsList li div.image {
-	float: left;
-	margin: 0 20px 0 0;
-	width: 200px;
+    float: left;
+    margin: 0 20px 0 0;
+    width: 200px;
 }
 
 ul.eventsList li div.info {
-	float: left;
-	width: 420px;
+    float: left;
+    width: 420px;
 }
 
 ul.eventsList li div.info h3 {
-	margin: 0 0 15px 0;
+    margin: 0 0 15px 0;
 }
 
 ul.eventsList li div.info p {
-	margin: 0 0 5px 0;
+    margin: 0 0 5px 0;
 }
 
 ul.eventsList li div.info div.details {
-	font-size: 12px;
-	line-height: 16px;
-	margin: 20px 0;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 20px 0;
 }
 
 
@@ -457,31 +467,31 @@ ul.historyList {
 }
 
 ul.historyList li {
-	float: left;
-	margin: 20px 0;
+    float: left;
+    margin: 20px 0;
 }
 
 ul.historyList li div.image {
-	height: 310px;
-	margin: 0 20px 10px 0;
-	width: 200px;
+    height: 310px;
+    margin: 0 20px 10px 0;
+    width: 200px;
 }
 
 ul.historyList li div.info {
-	height: 70px;
-	width: 200px;
+    height: 70px;
+    width: 200px;
 }
 
 ul.historyList li div.info h3 {
-	font-size: 14px;
-	margin: 5px 0;
-	text-align: center;
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: center;
 }
 
 ul.historyList li div.info p {
-	font-size: 12px;
-	margin: 0 0 5px 0;
-	text-align: center;
+    font-size: 12px;
+    margin: 0 0 5px 0;
+    text-align: center;
 }
 
 /*** EVENT VIEW ***/
@@ -490,71 +500,71 @@ div.eventView {
 }
 
 div.eventView div.buttons {
-	margin: 0 0 25px 0;
+    margin: 0 0 25px 0;
 }
 
 div.eventView div.sharethis {
-	padding: 0 40px 0 0;
+    padding: 0 40px 0 0;
 }
 
 div.eventView div.image {
-	float: right;
-	margin: 0 0 20px 20px;
+    float: right;
+    margin: 0 0 20px 20px;
 }
 
 div.eventView p {
-	line-height: 18px;
-	margin: 5px 0;
+    line-height: 18px;
+    margin: 5px 0;
 }
 
 div.eventView p.date {
-	font-size: 20px;
-	line-height: 22px;
+    font-size: 20px;
+    line-height: 22px;
 }
 
 div.eventView p.time {
-	font-size: 20px;
-	line-height: 22px;
+    font-size: 20px;
+    line-height: 22px;
 }
 
 div.eventView p.city {
-	font-size: 20px;
-	line-height: 22px;
+    font-size: 20px;
+    line-height: 22px;
 }
 
 div.eventView p.venue {
-	font-size: 20px;
-	line-height: 22px;
+    font-size: 20px;
+    line-height: 22px;
 }
 
 div.eventView div.details {
-	margin: 35px 0;
+    margin: 35px 0;
 }
 
 div.eventView div.moreinfo {
-	margin: 25px 0;
+    margin: 25px 0;
 }
 
 div.eventView div.moreinfo p {
-	line-height: 22px;
-	margin: 15px 0;
+    line-height: 22px;
+    margin: 15px 0;
 }
 
 div.eventView div.moreinfo a {
-	font-weight: bold;
-	text-decoration: underline;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 div.eventView div.moreinfo a:hover {
-	color: #ac4f17;
+    color: #ac4f17;
 }
 
 div.eventView div.tickets {
-	margin: 10px 0;
+    margin: 10px 0;
 }
 
 
 
 div.eventView div.youtube {
-	margin: 45px 0;
+    margin: 45px 0;
 }

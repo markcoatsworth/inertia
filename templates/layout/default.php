@@ -14,26 +14,44 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Inertia Entertainment';
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
+    <title>Inertia Entertainment</title>
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
     <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake', 'inertia']) ?>
+    <?= $this->Html->script(['jquery/jquery-1.5.min', 'jquery/jquery.pngFix.pack', 'inertia']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+   
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+         fbq('init', '222771348378110'); 
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+         <img height="1" width="1" 
+        src="https://www.facebook.com/tr?id=222771348378110&ev=PageView
+        &noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 <body>
     <div id="header">
