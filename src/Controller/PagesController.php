@@ -61,6 +61,10 @@ class PagesController extends AppController
         }
         $this->set(compact('page', 'subpage'));
 
+        $this->loadModel('Events');
+        $events = $this->Events->find('all', ['conditions' => array('date >= ' => date("Y-m-d")), 'order' => 'date ASC']);
+        $this->set(compact('events'));
+
         try {
             return $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {

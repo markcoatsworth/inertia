@@ -10,7 +10,8 @@ class Event extends Entity
         '*' => true,
         'id' => false,
         'title' => false,
-		'details' => false
+        'details' => false,
+        'date' => false
     ];
 }
 
