@@ -1,20 +1,14 @@
-<h1>Events</h1>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Created</th>
-    </tr>
-
-    <!-- Here is where we iterate through our $events query object, printing out event info -->
-
-    <?php foreach ($events as $event): ?>
-    <tr>
-        <td>
-            <?= $this->Html->link($event->title, ['action' => 'view', $event->id]) ?>
-        </td>
-        <td>
-            <?= $event->created->format(DATE_RFC850) ?>
-        </td>
-    </tr>
+<h2>Past Events</h2>
+    <ul class="historyList">
+    <?php foreach($events as $event): ?>
+        <li>
+            <div class="image">
+                <?= $this->Html->image('Events/tnails/'.$event->flyer); ?>
+            </div>
+            <div class="info">
+                <h3><?= $event->title ?></h3>
+                <p class="date"><?= date('F j, Y', strtotime($event->date)); ?></p>
+            </div>
+        </li>
     <?php endforeach; ?>
-</table>
+    </ul>

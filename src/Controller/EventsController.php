@@ -7,8 +7,7 @@ class EventsController extends AppController
 {
     public function index()
     {
-        $this->loadComponent('Paginator');
-        $events = $this->Paginator->paginate($this->Events->find());
+        $events = $this->Events->find('all', ['conditions' => array('date <= ' => date("Y-m-d")), 'order' => 'date DESC']);
         $this->set(compact('events'));
     }
 
