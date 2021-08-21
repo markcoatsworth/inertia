@@ -158,7 +158,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         // Load identifiers, ensure we check email and password fields
         $authenticationService->loadIdentifier('Authentication.Password', [
             'fields' => [
-                'username' => 'email',
+                'username' => 'username',
                 'password' => 'password',
             ]
         ]);
@@ -168,7 +168,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         // Configure form data check to pick email and password
         $authenticationService->loadAuthenticator('Authentication.Form', [
             'fields' => [
-                'username' => 'email',
+                'username' => 'username',
                 'password' => 'password',
             ],
             'loginUrl' => Router::url('/users/login'),

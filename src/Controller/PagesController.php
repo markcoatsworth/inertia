@@ -82,4 +82,13 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    public function adminIndex()
+    {
+        $this->viewBuilder()->setLayout('admin');
+
+        $this->loadModel('Events');
+        $events = $this->Events->find('all', ['conditions' => array('date <= ' => date("Y-m-d")), 'order' => 'date DESC']);
+        $this->set(compact('events'));
+    }
 }

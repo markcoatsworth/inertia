@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Entity;
 
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 
 /**
@@ -30,6 +31,9 @@ class User extends Entity
     protected $_accessible = [
         'email' => true,
         'password' => true,
+        'username' => true,
+        'first_name' => true,
+        'last_name' => true,
         'created' => true,
         'modified' => true,
         'articles' => true,

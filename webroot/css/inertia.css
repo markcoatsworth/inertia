@@ -21,7 +21,6 @@
 }
 
 
-
 /*** TYPOGRAPHY ***/
 
 body {
@@ -87,12 +86,12 @@ div#container {
 }
 
 
-
 /*** LAYOUT ***/
 
 body {
     background: #000 url('/img/body_background.gif') repeat;
 }
+
 
 /*** HEADER BLOCK ***/
 
@@ -183,7 +182,7 @@ div#navigation ul li a.instagram {
 }
 
 
-/*** CONTAINER BLOCK ***/
+/*** CONTENT ***/
 
 div#container {
     background: #010000 url('/img/container_background.gif') no-repeat;
@@ -194,7 +193,10 @@ div#container {
     -moz-box-shadow: 0px 12px 12px #000;
     -webkit-box-shadow: 0px 12px 12px #000;
     box-shadow: 0px 12px 12px #000;
+}
 
+div.content {
+    background: none;
 }
 
 
@@ -250,7 +252,6 @@ table.eventActions td.sortYear form {
 }
 
 
-
 /*** BUTTONS ***/
 
 a.button {
@@ -286,7 +287,12 @@ a.view {
     background: url('/img/icon_view.png') no-repeat;
 }    
 
-/*** FORM BUTTONS ***/
+
+/*** FORMS ***/
+
+input {
+    color: #fff;
+}
 
 input.button {
     border: 0px;
@@ -309,6 +315,19 @@ input.save {
     background: url('/img/icon_save.png') no-repeat;
 }
 
+form.edit input[type=text], form.add input[type=text] {
+    width: 400px;
+}
+form.edit div.input, form.add div.input {
+    margin: 5px 0;
+}
+form.edit textarea, form.add textarea {
+    font-family: sans-serif;
+    font-size: 12px;
+    height: 14px;
+    padding: 3px;
+    width: 400px;
+}
 
 
 /*** WIDGETS ***/
@@ -316,7 +335,6 @@ input.save {
 div.search_widget {
     margin: 10px 0;
 }
-
 
 
 /*** CLASS ELEMENTS ***/
@@ -337,26 +355,6 @@ div.alertMessage div.success p.item {
 }
 
 
-/*** FORMS ***/
-
-form.edit input[type=text], form.add input[type=text] {
-    width: 400px;
-}
-form.edit div.input, form.add div.input {
-    margin: 5px 0;
-}
-form.edit textarea, form.add textarea {
-    font-family: sans-serif;
-    font-size: 12px;
-    height: 14px;
-    padding: 3px;
-    width: 400px;
-}
-
-
-
-
-    
 /*** TABLES ***/
 
 table.index {
@@ -376,7 +374,6 @@ table.index th {
     vertical-align: middle;
 }
 
-
 table.index td {
     padding: 5px 10px;
     text-align: left;
@@ -389,7 +386,6 @@ table.index th.date {
 table.index th.options {
     width: 200px;
 }
-
 
 table.add, table.edit {
     margin: 20px 0;
@@ -417,6 +413,7 @@ table.add td, table.edit td {
     width: 100%;
 }
 
+
 /*** EVENT CONTENT STYLES ***/
 
 div#EventFlyerPreview {
@@ -427,6 +424,7 @@ div#EventFlyerPreview {
     display: none;
     color: #fff;
 }
+
 
 /*** EVENT LISTS ***/
 
@@ -462,7 +460,6 @@ ul.eventsList li div.info div.details {
     margin: 20px 0;
 }
 
-
 ul.historyList {
 }
 
@@ -493,6 +490,7 @@ ul.historyList li div.info p {
     margin: 0 0 5px 0;
     text-align: center;
 }
+
 
 /*** EVENT VIEW ***/
 
@@ -562,8 +560,6 @@ div.eventView div.moreinfo a:hover {
 div.eventView div.tickets {
     margin: 10px 0;
 }
-
-
 
 div.eventView div.youtube {
     margin: 45px 0;

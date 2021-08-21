@@ -53,8 +53,8 @@ $routes->scope('/', function (RouteBuilder $builder) {
     $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     $builder->connect('/history', ['controller' => 'Events', 'action' => 'index']);
 
-    $builder->connect('/admin', ['controller' => 'Pages', 'action' => 'index', 'admin' => 'true']);
-    $builder->connect('/admin/login', ['controller' => 'Pages', 'action' => 'login']);
+    $builder->connect('/admin', ['controller' => 'Pages', 'action' => 'admin_index', 'admin' => 'true']);
+    $builder->connect('/admin/login', ['controller' => 'Users', 'action' => 'login']);
     $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 
     /*
