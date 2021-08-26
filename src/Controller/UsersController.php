@@ -26,8 +26,8 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $users = $this->paginate($this->Users);
-
+        $this->viewBuilder()->setLayout('admin');
+        $users = $this->Users->find('all');
         $this->set(compact('users'));
     }
 
@@ -76,6 +76,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->setLayout('admin');
         $user = $this->Users->get($id, [
             'contain' => ['Articles'],
         ]);
@@ -90,6 +91,7 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->setLayout('admin');
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -112,6 +114,7 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->setLayout('admin');
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);

@@ -243,6 +243,14 @@ table.eventActions {
     width: 100%;
 }
 
+table.eventActions td {
+    padding: 0 !important;
+}
+
+table.eventActions td.add {
+    width: 160px;
+}
+
 table.eventActions td.sortYear {
     vertical-align: bottom;
 }
@@ -251,44 +259,68 @@ table.eventActions td.sortYear form {
     float: right;
 }
 
+td.date {
+    width: 180px;
+}
+
+td.actions {
+    width: 170px;
+}
+
 
 /*** BUTTONS ***/
 
 a.button {
     border: 0;
-    color: #666;
+    color: #fff
     display: block;
     font-size: 12px;
     font-weight: bold;
-    line-height: 1.5;
-    margin: 0 30px 0 0;
-    padding: 5px 0 0 30px;
-    
+    margin: 0 15px 10px 0;
+    padding: 0 15px 0 40px;
 }
 a.add {
-    background: url('/img/icon_add.png') no-repeat;
+    background: url('/img/icon_add.png') 6px no-repeat #333;
 }
 a.back {
-    background: url('/img/icon_back.png') no-repeat;
+    background: url('/img/icon_back.png') 6px no-repeat #333;
 }
 a.delete {
-    background: url('/img/icon_delete.png') no-repeat;
+    background: url('/img/icon_delete.png') 6px no-repeat #333;
 }
 a.edit {
-    background: url('/img/icon_edit.png') no-repeat;
+    background: url('/img/icon_edit.png') 6px no-repeat #333;
 }
 a.index {
-    background: url('/img/icon_index.png') no-repeat;
+    background: url('/img/icon_index.png') 6px no-repeat #333;
 }
 a.tickets {
-    background: url('/img/icon_tickets.png') no-repeat;
+    background: url('/img/icon_tickets.png') 6px no-repeat #333;
 }
 a.view {
-    background: url('/img/icon_view.png') no-repeat;
+    background: url('/img/icon_view.png') 6px no-repeat #333;
 }    
 
 
 /*** FORMS ***/
+
+form.edit input[type=text], form.add input[type=text] {
+    width: 400px;
+}
+form.edit div.input, form.add div.input {
+    margin: 5px 0;
+}
+form.edit textarea, form.add textarea {
+    font-family: sans-serif;
+    font-size: 12px;
+    height: 14px;
+    padding: 3px;
+    width: 400px;
+}
+
+label {
+    display: block;
+}
 
 input {
     color: #fff;
@@ -315,19 +347,7 @@ input.save {
     background: url('/img/icon_save.png') no-repeat;
 }
 
-form.edit input[type=text], form.add input[type=text] {
-    width: 400px;
-}
-form.edit div.input, form.add div.input {
-    margin: 5px 0;
-}
-form.edit textarea, form.add textarea {
-    font-family: sans-serif;
-    font-size: 12px;
-    height: 14px;
-    padding: 3px;
-    width: 400px;
-}
+
 
 
 /*** WIDGETS ***/
@@ -357,6 +377,21 @@ div.alertMessage div.success p.item {
 
 /*** TABLES ***/
 
+th {
+    background-color: #333;
+    color: #ccc;
+    padding: 10px !important;
+    text-align: left;
+    vertical-align: middle;
+}
+
+td {
+    border-bottom: none;
+    padding: 10px !important;
+    text-align: left;
+    vertical-align: middle;
+}
+
 table.index {
     margin: 20px 0;
     width: 100%;
@@ -364,20 +399,6 @@ table.index {
 
 table.index tr {
     border-bottom: 1px solid #aaa;
-}
-
-table.index th {
-    background-color: #333;
-    color: #ccc;
-    padding: 10px;
-    text-align: left;
-    vertical-align: middle;
-}
-
-table.index td {
-    padding: 5px 10px;
-    text-align: left;
-    vertical-align: middle;
 }
 
 table.index th.date {
@@ -394,15 +415,6 @@ table.add, table.edit {
 
 table.add tr, table.edit tr {
     border-bottom: 1px solid #555;
-}
-
-table.add th, table.edit th {
-    background-color: #333;
-    color: #ccc;
-    padding: 10px;
-    text-align: left;
-    vertical-align: middle;
-    width: 160px;
 }
 
 table.add td, table.edit td {
@@ -428,64 +440,64 @@ div#EventFlyerPreview {
 
 /*** EVENT LISTS ***/
 
-ul.eventsList {
+ul.events {
 }
 
-ul.eventsList li {
-    margin: 20px 0;
+ul.events li {
+    margin: 0 0 40px 0;
 }
 
-ul.eventsList li div.image {
+ul.events li div.image {
     float: left;
     margin: 0 20px 0 0;
     width: 200px;
 }
 
-ul.eventsList li div.info {
+ul.events li div.info {
     float: left;
     width: 420px;
 }
 
-ul.eventsList li div.info h3 {
+ul.events li div.info h3 {
     margin: 0 0 15px 0;
 }
 
-ul.eventsList li div.info p {
+ul.events li div.info p {
     margin: 0 0 5px 0;
 }
 
-ul.eventsList li div.info div.details {
+ul.events li div.info div.details {
     font-size: 12px;
     line-height: 16px;
     margin: 20px 0;
 }
 
-ul.historyList {
+ul.history {
 }
 
-ul.historyList li {
+ul.history li {
     float: left;
     margin: 20px 0;
 }
 
-ul.historyList li div.image {
+ul.history li div.image {
     height: 310px;
     margin: 0 20px 10px 0;
     width: 200px;
 }
 
-ul.historyList li div.info {
+ul.history li div.info {
     height: 70px;
     width: 200px;
 }
 
-ul.historyList li div.info h3 {
+ul.history li div.info h3 {
     font-size: 14px;
     margin: 5px 0;
     text-align: center;
 }
 
-ul.historyList li div.info p {
+ul.history li div.info p {
     font-size: 12px;
     margin: 0 0 5px 0;
     text-align: center;

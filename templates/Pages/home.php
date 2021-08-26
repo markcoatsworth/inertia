@@ -1,5 +1,5 @@
 <h2>Upcoming Events</h2>
-<ul class="eventsList">
+<ul class="events">
 <?php foreach($events as $event): ?>
     <li>
         <div class="image">
@@ -14,7 +14,9 @@
             <div class="details"><?= $event->details ?></div>
             <div class="buttons">
                 <?= $this->Html->link('More Info', ['controller' => 'events', 'action' => 'view', $event->id], ['class' => 'button view left']); ?>
-                <?= $this->Html->link('Buy Tickets', $event->tickets_url, ['class' => 'button tickets left', 'target' => '_blank']); ?>
+                <?php if (isset($event->tickets_url) && !empty($event->tickets_url)): ?>
+                    <?= $this->Html->link('Buy Tickets', $event->tickets_url, ['class' => 'button tickets left', 'target' => '_blank']); ?>
+                <?php endif ?>
                 <div class="clear"></div>
             </div>
         </div>

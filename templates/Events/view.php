@@ -26,14 +26,18 @@
         <?     $event->details ?>
     </div>
 
-    <h3>Additional Info:</h3>
-    <div class="moreinfo">
-        <?     $event->moreinfo ?>
-    </div>
-
-    <div class="tickets">
-        <?= $this->Html->link('Buy Tickets', $event->tickets_url, ['class' => 'button tickets', 'target' => '_blank']) ?>
-    </div>
+    <?php if (isset($event->moreinfo) && !empty($event->moreinfo)): ?>
+        <h3>Additional Info:</h3>
+        <div class="moreinfo">
+            <?= $event->moreinfo ?>
+        </div>
+    <?php endif ?>
+    
+    <?php if (isset($event->tickets_url) && !empty($event->tickets_url)): ?>
+        <div class="tickets">
+            <?= $this->Html->link('Buy Tickets', $event->tickets_url, ['class' => 'button tickets', 'target' => '_blank']) ?>
+        </div>
+    <?php endif ?>
 
 </div>
 <div class="clear"></div>

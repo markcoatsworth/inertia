@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Core\Configure;
+use Cake\Datasource\ConnectionManager;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
@@ -86,9 +87,10 @@ class PagesController extends AppController
     public function adminIndex()
     {
         $this->viewBuilder()->setLayout('admin');
-
         $this->loadModel('Events');
-        $events = $this->Events->find('all', ['conditions' => array('date <= ' => date("Y-m-d")), 'order' => 'date DESC']);
+
+        $this->loadComponent('Paginator');
+        $events = $this->Paginator->paginate($this->Events->find('all', ['order' => 'date DESC']));
         $this->set(compact('events'));
     }
 }

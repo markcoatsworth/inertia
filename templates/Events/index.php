@@ -1,5 +1,5 @@
 <h2>Past Events</h2>
-<ul class="historyList">
+<ul class="history">
 <?php foreach($events as $event): ?>
     <li>
         <div class="image">

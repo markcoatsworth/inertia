@@ -69,23 +69,20 @@ $cakeDescription = 'Inertia Entertainment';
         <div class="clear"></div>   
     </div>
     <div id="container">
-        <div class="column_wide left">
-            <?= $this->Flash->render() ?>
-            <?= $this->fetch('content') ?>
-        </div>
-        <div class="column_narrow right">
-            <p style="font-size: 14px; margin: 5px 0 10px 5px; text-align: center;"><img style="width: 180px;" src="/img/BestOf2015_winner.png"></p>
-            <p style="font-size: 14px; margin: 5px 0 10px 5px; text-align: center;"><img style="width: 180px;" src="/img/BestOf2014_winner_colour.png"></p>
-            <p style="font-size: 14px; margin: 5px 0; text-align: center;"><img style="width: 180px;" src="/img/BestOf2013_winner_colour.jpg"></p>
-            <p style="font-size: 14px; margin: 5px 0; text-align: center;">Toronto's Best Concert Promoter</p>
-            <div class="search_widget" style="display:none;">
-                <form action="/" method="post">
-                    <input type="text" name="search"></input>
-                    <input type="submit" value="Search"></input>
-                </font>
-            </div> 
+    <div class="admin_navigation">
+            <ul class="admin_navigation">
+                <li>Welcome, <?= $this->request->getSession()->read('User.first_name'); ?>!</li>
+                <li class="separator">&bull;</li>
+                <li><?= $this->Html->link('Event Manager', array('controller' => 'pages', 'action' => 'admin_index')) ?></li>
+                <li class="separator">&bull;</li>
+                <li><?= $this->Html->link('User Manager', array('controller' => 'users', 'action' => 'index')) ?></li>
+                <li class="separator">&bull;</li>
+                <li><?= $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')) ?></li>
+            </ul>
         </div>
         <div class="clear"></div>
+        <?= $this->Flash->render() ?>
+        <?= $this->fetch('content') ?>
     </div>
 
     <div id="footer">
