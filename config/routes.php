@@ -51,7 +51,7 @@ $routes->scope('/', function (RouteBuilder $builder) {
      * to use (in this case, templates/Pages/home.php)...
      */
     $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $builder->connect('/history', ['controller' => 'Events', 'action' => 'index']);
+    $builder->connect('/history', ['controller' => 'Events', 'action' => 'history']);
 
     $builder->connect('/admin', ['controller' => 'Pages', 'action' => 'admin_index']);
     $builder->connect('/users', ['controller' => 'Users', 'action' => 'index']);

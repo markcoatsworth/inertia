@@ -277,52 +277,17 @@ a.button {
     font-size: 12px;
     font-weight: bold;
     margin: 0 15px 10px 0;
-    padding: 0 15px 0 40px;
+    padding: 0 15px;
 }
-a.add {
-    background: url('/img/icon_add.png') 6px no-repeat #333;
-}
-a.back {
-    background: url('/img/icon_back.png') 6px no-repeat #333;
-}
-a.delete {
-    background: url('/img/icon_delete.png') 6px no-repeat #333;
-}
-a.edit {
-    background: url('/img/icon_edit.png') 6px no-repeat #333;
-}
-a.index {
-    background: url('/img/icon_index.png') 6px no-repeat #333;
-}
-a.tickets {
-    background: url('/img/icon_tickets.png') 6px no-repeat #333;
-}
-a.view {
-    background: url('/img/icon_view.png') 6px no-repeat #333;
-}    
 
 
 /*** FORMS ***/
-
-form.edit input[type=text], form.add input[type=text] {
-    width: 400px;
-}
-form.edit div.input, form.add div.input {
-    margin: 5px 0;
-}
-form.edit textarea, form.add textarea {
-    font-family: sans-serif;
-    font-size: 12px;
-    height: 14px;
-    padding: 3px;
-    width: 400px;
-}
 
 label {
     display: block;
 }
 
-input {
+input, textarea {
     color: #fff;
 }
 
@@ -336,18 +301,6 @@ input.button {
     margin: 0 20px 0 0;
     padding: 0 0 4px 30px;    
 }
-input.button:hover {
-    text-decoration: underline;
-}
-
-input.cancel {
-    background: url('/img/icon_cancel.png') no-repeat;
-}
-input.save {
-    background: url('/img/icon_save.png') no-repeat;
-}
-
-
 
 
 /*** WIDGETS ***/

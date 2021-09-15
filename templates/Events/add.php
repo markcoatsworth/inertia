@@ -8,6 +8,7 @@
             echo $this->Form->control('venue');
             echo $this->Form->control('city');
             echo $this->Form->control('details');
+            echo $this->Form->control('flyer', ['type' => 'file']);
             echo $this->Form->control('moreinfo');
             echo $this->Form->control('tickets_url');
             echo $this->Form->control('youtube_url');

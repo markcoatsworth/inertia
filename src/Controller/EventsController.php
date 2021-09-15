@@ -10,12 +10,13 @@ class EventsController extends AppController
         parent::beforeFilter($event);
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
-        $this->Authentication->addUnauthenticatedActions(['index', 'view']);
+        $this->Authentication->addUnauthenticatedActions(['history', 'view']);
     }
 
     public function index()
     {
-        $events = $this->Events->find('all', ['conditions' => array('date <= ' => date("Y-m-d")), 'order' => 'date DESC']);
+        $this->viewBuilder()->setLayout('admin');
+        $events = $this->Events->find('all', ['order' => 'date DESC']);
         $this->set(compact('events'));
     }
 
@@ -30,13 +31,12 @@ class EventsController extends AppController
         $this->viewBuilder()->setLayout('admin');
         $event = $this->Events->newEmptyEntity();
         if ($this->request->is('post')) {
-            $event = $this->Events->patchEntity($user, $this->request->getData());
+            $event = $this->Events->patchEntity($event, $this->request->getData());
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('The event has been saved.'));
-
+                $this->Flash->success(__('This event has been saved.'));
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The event could not be saved. Please, try again.'));
+            $this->Flash->error(__('The event could not be saved. Please try again.'));
         }
         $this->set(compact('event'));
     }
@@ -50,13 +50,19 @@ class EventsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Events->patchEntity($event, $this->request->getData());
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('This event has been updated.'));
 
-                return $this->redirect(['action' => 'adminIndex']);
+                return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The event could not be saved. Please, try again.'));
+            $this->Flash->error(__('This event could not be updated. Please try again.'));
         }
         $this->set(compact('event'));
+    }
+
+    public function history()
+    {
+        $events = $this->Events->find('all', ['conditions' => array('date <= ' => date("Y-m-d")), 'order' => 'date DESC']);
+        $this->set(compact('events'));
     }
 }
 

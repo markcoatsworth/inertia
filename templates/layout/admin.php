@@ -81,6 +81,7 @@ $cakeDescription = 'Inertia Entertainment';
             </ul>
         </div>
         <div class="clear"></div>
+        <h2>Administration Panel</h2>
         <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
     </div>
