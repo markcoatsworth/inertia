@@ -48,13 +48,22 @@ class EventsController extends AppController
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Events->patchEntity($event, $this->request->getData());
+            // Image upload, make resized copies
+            $fileobject = $this->request->getData('flyer');
+            $uploadPath = '../uploads/';
+            $destination = $uploadPath.$fileobject->getClientFilename();
+            $fileobject->moveTo($destination);
+
+            // Massage image upload data and save it
+            $eventData = $this->request->getData();
+            $eventData['flyer'] = $fileobject->getClientFilename();
+            $event = $this->Events->patchEntity($event, $eventData);
+
             if ($this->Events->save($event)) {
                 $this->Flash->success(__('This event has been updated.'));
-
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', 'id' => $id]);
             }
-            $this->Flash->error(__('This event could not be updated. Please try again.'));
+            $this->Flash->error(__('This event could not be updated to $destination. Please try again.'));
         }
         $this->set(compact('event'));
     }
