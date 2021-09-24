@@ -3,6 +3,8 @@
 
 namespace App\Controller;
 
+use Intervention\Image\ImageManager;
+
 class EventsController extends AppController
 {
     public function beforeFilter(\Cake\Event\EventInterface $event)
@@ -48,20 +50,31 @@ class EventsController extends AppController
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            // Image upload, make resized copies
-            $fileobject = $this->request->getData('flyer');
-            $uploadPath = '../uploads/';
-            $destination = $uploadPath.$fileobject->getClientFilename();
-            $fileobject->moveTo($destination);
+            $flyerFile = $this->request->getData('flyer')->getClientFilename();
+            if (!empty($flyerFile) && isset($flyerFile)) {
+                // Flyer image upload
+                $fileobject = $this->request->getData('flyer');
+                $uploadPath = '../uploads/';
+                $destination = $uploadPath.$flyerFile;
+                $fileobject->moveTo($destination);
 
-            // Massage image upload data and save it
-            $eventData = $this->request->getData();
-            $eventData['flyer'] = $fileobject->getClientFilename();
-            $event = $this->Events->patchEntity($event, $eventData);
+                // Flyer image resizes
+                $manager = new ImageManager(array('driver' => 'imagick'));
+                $largeImage = $manager->make($destination)->widen(325);
+                $largeImage->save('../webroot/img/Events/'.$flyerFile);
+                $mediumImage = $manager->make($destination)->widen(250);
+                $mediumImage->save('../webroot/img/Events/medium/'.$flyerFile);
+                $smallImage = $manager->make($destination)->widen(200);
+                $smallImage->save('../webroot/img/Events/tnails/'.$flyerFile);
 
+                // Massage image upload data and save it
+                $eventData = $this->request->getData();
+                $eventData['flyer'] = $fileobject->getClientFilename();
+                $event = $this->Events->patchEntity($event, $eventData);
+            }
             if ($this->Events->save($event)) {
                 $this->Flash->success(__('This event has been updated.'));
-                return $this->redirect(['action' => 'view', 'id' => $id]);
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('This event could not be updated to $destination. Please try again.'));
         }
