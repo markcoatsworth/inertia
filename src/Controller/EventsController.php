@@ -50,27 +50,36 @@ class EventsController extends AppController
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $flyerFile = $this->request->getData('flyer')->getClientFilename();
-            if (!empty($flyerFile) && isset($flyerFile)) {
+            $eventData = $this->request->getData();
+
+            // Did we just get a new image upload? If so, use that
+            $newFlyerFile = $this->request->getData('flyer')->getClientFilename();
+            if (!empty($newFlyerFile) && isset($newFlyerFile)) {
+                $eventData['flyer'] = $newFlyerFile;
+                $event = $this->Events->patchEntity($event, $eventData);
+            }
+            // Was there an existing file? If so, keep that and don't overwrite it
+            $oldFlyerFile = $event['flyer'];
+            if (!empty($oldFlyerFile) && isset($oldFlyerFile)) {
+                $eventData['flyer'] = $oldFlyerFile;
+                $event = $this->Events->patchEntity($event, $eventData);
+            }
+            // Image management
+            if (!empty($newFlyerFile) && isset($newFlyerFile)) {
                 // Flyer image upload
                 $fileobject = $this->request->getData('flyer');
                 $uploadPath = '../uploads/';
-                $destination = $uploadPath.$flyerFile;
+                $destination = $uploadPath.$newFlyerFile;
                 $fileobject->moveTo($destination);
 
                 // Flyer image resizes
                 $manager = new ImageManager(array('driver' => 'imagick'));
                 $largeImage = $manager->make($destination)->widen(325);
-                $largeImage->save('../webroot/img/Events/'.$flyerFile);
+                $largeImage->save('../webroot/img/Events/'.$newFlyerFile);
                 $mediumImage = $manager->make($destination)->widen(250);
-                $mediumImage->save('../webroot/img/Events/medium/'.$flyerFile);
+                $mediumImage->save('../webroot/img/Events/medium/'.$newFlyerFile);
                 $smallImage = $manager->make($destination)->widen(200);
-                $smallImage->save('../webroot/img/Events/tnails/'.$flyerFile);
-
-                // Massage image upload data and save it
-                $eventData = $this->request->getData();
-                $eventData['flyer'] = $fileobject->getClientFilename();
-                $event = $this->Events->patchEntity($event, $eventData);
+                $smallImage->save('../webroot/img/Events/tnails/'.$newFlyerFile);
             }
             if ($this->Events->save($event)) {
                 $this->Flash->success(__('This event has been updated.'));
