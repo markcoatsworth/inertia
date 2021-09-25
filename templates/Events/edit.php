@@ -1,7 +1,15 @@
+<script>
+    tinymce.init({
+        selector: "#moreinfo",
+        skin: "oxide-dark",
+        content_css: "dark"
+    });
+</script>
+
 <div class="content">
     <?= $this->Form->create($event, ['type' => 'file']); ?>
     <fieldset>
-        <h2>Edit Event</h2>
+        <h2>Edit Event: <?= $event->title ?></h2>
         <?php
             echo $this->Form->control('title');
             echo $this->Form->control('date', ['type' => 'datetime']);

@@ -28,6 +28,7 @@ $cakeDescription = 'Inertia Entertainment';
 
     <?= $this->Html->css(['reset', 'normalize.min', 'milligram.min', 'cake', 'inertia']) ?>
     <?= $this->Html->script(['jquery/jquery-1.5.min', 'jquery/jquery.pngFix.pack', 'inertia']) ?>
+    <script src="https://cdn.tiny.cloud/1/h5dqht91ez2y0zlpio9b4vktrwu21xy4vcwhochwdmt2umsc/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
