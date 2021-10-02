@@ -33,7 +33,31 @@ class EventsController extends AppController
         $this->viewBuilder()->setLayout('admin');
         $event = $this->Events->newEmptyEntity();
         if ($this->request->is('post')) {
-            $event = $this->Events->patchEntity($event, $this->request->getData());
+            $eventData = $this->request->getData();
+            $flyer = $this->request->getData('flyer');
+            if ($flyer != null && $flyer->getError() != UPLOAD_ERR_NO_FILE) {
+                $flyerFile = $flyer->getClientFilename();
+                $eventData['flyer'] = $flyerFile;
+
+                // Image upload
+                $fileobject = $this->request->getData('flyer');
+                $uploadPath = '../uploads/';
+                $destination = $uploadPath.$flyerFile;
+                $fileobject->moveTo($destination);
+
+                // Image resizes
+                $manager = new ImageManager(array('driver' => 'imagick'));
+                $largeImage = $manager->make($destination)->widen(325);
+                $largeImage->save('../webroot/img/Events/'.$flyerFile);
+                $mediumImage = $manager->make($destination)->widen(250);
+                $mediumImage->save('../webroot/img/Events/medium/'.$flyerFile);
+                $smallImage = $manager->make($destination)->widen(200);
+                $smallImage->save('../webroot/img/Events/tnails/'.$flyerFile);
+            }
+            else {
+                $eventData['flyer'] = "";
+            }
+            $event = $this->Events->patchEntity($event, $eventData);
             if ($this->Events->save($event)) {
                 $this->Flash->success(__('This event has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -51,9 +75,10 @@ class EventsController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eventData = $this->request->getData();
+            $flyer = $this->request->getData('flyer');
 
             // Did we just get a new image upload? If so, use that
-            $newFlyerFile = $this->request->getData('flyer')->getClientFilename();
+            $newFlyerFile = $flyer->getClientFilename();
             if (!empty($newFlyerFile) && isset($newFlyerFile)) {
                 $eventData['flyer'] = $newFlyerFile;
                 $event = $this->Events->patchEntity($event, $eventData);
@@ -82,12 +107,33 @@ class EventsController extends AppController
                 $smallImage->save('../webroot/img/Events/tnails/'.$newFlyerFile);
             }
             if ($this->Events->save($event)) {
-                $this->Flash->success(__('This event has been updated.'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success('This event has been updated.');
             }
-            $this->Flash->error(__('This event could not be updated to $destination. Please try again.'));
+            else {
+                $this->Flash->error('This event could not be updated. Please try again.');
+            }
         }
         $this->set(compact('event'));
+    }
+    
+     /**
+     * Delete method
+     *
+     * @param string|null $id Event id.
+     * @return \Cake\Http\Response|null|void Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $event = $this->Events->get($id);
+        if ($this->Events->delete($event)) {
+            $this->Flash->success(__('The event has been deleted.'));
+        } else {
+            $this->Flash->error(__('The event could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
     }
 
     public function history()
