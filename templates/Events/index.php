@@ -3,12 +3,16 @@
         <td class="add">
             <?= $this->Html->link(__('New Event'), ['controller' => 'Events', 'action' => 'add'], ['class' => 'button']) ?>
         </td>
-        <td class="sortYear">
-            <!--form id="eventsFilter" method="POST">
+        <td class="filter">
+            <form id="eventsFilter" method="GET">
                 <label>View events by year:</label>
                 <select name="year" class="year">
+                    <?php foreach($years as $year) : ?>
+                        <?php $selected = ($year['year'] == $selectedYear) ? "selected" : ""; ?>
+                        <option name="<?= $year['year'] ?>" value="<?= $year['year'] ?>" <?= $selected ?>><?= $year['year'] ?></option>
+                    <?php endforeach; ?>
                 </select>
-            </form-->
+            </form>
         </td>
 </table>
 

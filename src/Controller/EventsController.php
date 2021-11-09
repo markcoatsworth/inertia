@@ -18,7 +18,15 @@ class EventsController extends AppController
     public function index()
     {
         $this->viewBuilder()->setLayout('admin');
-        $events = $this->Events->find('all', ['order' => 'date DESC']);
+        $years = $this->Events->find()->select(['year' => 'DISTINCT YEAR(Events.date)'])->order(['year' => 'DESC']);
+        $this->set(compact('years'));
+        $selectedYear = $this->request->getQuery('year');
+        if (empty($selectedYear)) {
+            $selectedYear = date('Y');
+        }
+        $this->set('selectedYear', $selectedYear);
+        $events = $this->Events->find('all', array('conditions' => array('YEAR(Events.date)' => $selectedYear), 'order' => 'date DESC'));
+        //$events = $this->Events->find()->select(['YEAR(Events.date)' => $selectedYear])->order('date DESC');
         $this->set(compact('events'));
     }
 
