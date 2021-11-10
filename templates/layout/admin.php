@@ -74,7 +74,7 @@ $cakeDescription = 'Inertia Entertainment';
             <ul class="admin_navigation">
                 <li>Welcome, <?= $this->request->getSession()->read('User.first_name'); ?>!</li>
                 <li class="separator">&bull;</li>
-                <li><?= $this->Html->link('Event Manager', array('controller' => 'pages', 'action' => 'admin_index')) ?></li>
+                <li><?= $this->Html->link('Event Manager', array('controller' => 'events', 'action' => 'index')) ?></li>
                 <li class="separator">&bull;</li>
                 <li><?= $this->Html->link('User Manager', array('controller' => 'users', 'action' => 'index')) ?></li>
                 <li class="separator">&bull;</li>
