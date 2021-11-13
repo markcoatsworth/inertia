@@ -47,15 +47,16 @@ a.titlelink:hover {
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 38px;
     margin: 0 0 20px 0;
     text-align: center;
     text-transform: uppercase;
 }
 
 h2 {
-    color: #fff;
-    font-size: 26px;
+    color: #ccc;
+    font-size: 32px;
+    font-weight: bold;
     margin: 10px 0 30px 0;
     text-transform: uppercase;
 }
@@ -63,7 +64,7 @@ h2 {
 h3 {
     color: #fff;
     font-size: 20px;
-    margin: 20px 0;
+    margin: 0 0 40px 0;
     text-transform: uppercase;
 }
 
@@ -251,11 +252,11 @@ table.eventActions td.add {
     width: 160px;
 }
 
-table.eventActions td.sortYear {
+table.eventActions td.filter {
     vertical-align: bottom;
 }
 
-table.eventActions td.sortYear form {
+table.eventActions td.filter form {
     float: right;
 }
 
@@ -283,11 +284,8 @@ a.button {
 
 /*** FORMS ***/
 
-label {
-    display: block;
-}
-
 input, textarea {
+    background-color: none;
     color: #fff;
 }
 
@@ -300,6 +298,14 @@ input.button {
     height: 24px;
     margin: 0 20px 0 0;
     padding: 0 0 4px 30px;    
+}
+
+label {
+    font-size: 20px;
+}
+
+select {
+    background-color: #fff;
 }
 
 
@@ -412,7 +418,7 @@ ul.events li div.info {
 }
 
 ul.events li div.info h3 {
-    margin: 0 0 15px 0;
+    margin: 0 0 50px 0;
 }
 
 ul.events li div.info p {

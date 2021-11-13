@@ -1,32 +1,43 @@
-<script>
-    tinymce.init({
-        selector: "#moreinfo",
-        skin: "oxide-dark",
-        content_css: "dark"
-    });
-</script>
-
-
 <?= $this->Form->create($event, ['type' => 'file']); ?>
 <fieldset>
-    <h3>Edit Event: <?= $event->title ?></h3>
+    <h3>Edit Event: <b><?= $event->title ?></b></h3>
     <table class="event">
-        <tr><td><?= $this->Form->control('title') ?></td></tr>
-        <tr><td><?= $this->Form->control('date', ['type' => 'datetime']) ?></td></tr>
-        <tr><td><?= $this->Form->control('venue') ?></td></tr>
-        <tr><td><?= $this->Form->control('city') ?></td></tr>
-        <tr><td><?= $this->Form->control('details') ?></td></tr>
-        <tr><td>1234
-            <?php
-                $this->Form->control('flyer', ['type' => 'file']);
-                if (isset($event->flyer) && !empty($event->flyer)) {
+        <tr>
+            <td><label>Title</label></td>
+            <td><?= $this->Form->control('title', ['label' => false]) ?></td>
+        </tr>
+        <tr>
+            <td><label>Date</label></td>
+            <td><?= $this->Form->control('date', ['type' => 'datetime', 'label' => false]) ?></td>
+        </tr>
+        <tr>
+            <td><label>Venue</label></td>
+            <td><?= $this->Form->control('venue', ['label' => false]) ?></td>
+        </tr>
+        <tr>
+            <td><label>City</label></td>
+            <td><?= $this->Form->control('city', ['label' => false]) ?></td>
+        </tr>
+        <tr>
+            <td><label>Details</label><p>(Appears on the homepage events listing)</p></td>
+            <td><?= $this->Form->control('details', ['label' => false]) ?></td>
+        </tr>
+        <tr>
+            <td><label>Flyer Image</label></td>
+            <td><?= $this->Form->control('flyer', ['type' => 'file', 'label' => false]) ?>
+            <?php if (isset($event->flyer) && !empty($event->flyer)) {
                     echo $this->Html->image('Events/'.$event->flyer);
-                }
-             ?>
-        </td></tr>
-        <tr><td><?= $this->Form->control('moreinfo') ?></td></tr>
-        <tr><td><?= $this->Form->control('tickets_url') ?></td></tr>
-        <tr><td><?= $this->Form->control('youtube_url') ?></td></tr>
+                } ?>
+            </td>
+        </tr>
+        <tr>
+            <td><label>More Info</label><p>(Appears on the detailed event view)</p></td>
+            <td><?= $this->Form->control('moreinfo', ['label' => false]) ?></td>
+        </tr>
+        <tr>
+            <td><label>Tickets URL</label></td>
+            <td><?= $this->Form->control('tickets_url', ['label' => false]) ?></td>
+        </tr>
     </table>
 </fieldset>
 <?= $this->Form->button(__('Submit')) ?>
