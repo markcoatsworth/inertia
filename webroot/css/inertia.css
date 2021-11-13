@@ -308,6 +308,11 @@ select {
     background-color: #fff;
 }
 
+div.ck-content {
+    background-color: #111 !important;
+    height: 200px;
+}
+
 
 /*** WIDGETS ***/
 
