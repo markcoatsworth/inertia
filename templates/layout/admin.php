@@ -29,6 +29,7 @@ $cakeDescription = 'Inertia Entertainment';
     <?= $this->Html->css(['reset', 'normalize.min', 'milligram.min', 'cake', 'inertia']) ?>
     <?= $this->Html->script(['jquery/jquery-1.5.min', 'jquery/jquery.pngFix.pack', 'inertia']) ?>
     <script src="https://cdn.tiny.cloud/1/h5dqht91ez2y0zlpio9b4vktrwu21xy4vcwhochwdmt2umsc/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -71,10 +72,11 @@ $cakeDescription = 'Inertia Entertainment';
     </div>
     <div id="container">
     <div class="admin_navigation">
+            <p>
             <ul class="admin_navigation">
-                <li>Welcome, <?= $this->request->getSession()->read('User.first_name'); ?>!</li>
+                <li>Welcome, <?= $this->request->getSession()->read('Auth.first_name') ?>!</li>
                 <li class="separator">&bull;</li>
-                <li><?= $this->Html->link('Event Manager', array('controller' => 'events', 'action' => 'index')) ?></li>
+                <li><?= $this->Html->link('Event Manager', array('controller' => 'pages', 'action' => 'admin')) ?></li>
                 <li class="separator">&bull;</li>
                 <li><?= $this->Html->link('User Manager', array('controller' => 'users', 'action' => 'index')) ?></li>
                 <li class="separator">&bull;</li>
