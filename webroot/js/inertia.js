@@ -18,9 +18,18 @@ INERTIA.util = {
     }
 }
 
+INERTIA.EventAdminIndex = {
+    init: function() {
+        $("form#eventsFilter select.year").change(function() {
+            $("form#eventsFilter").submit();
+        });
+    }
+
+}
+
 $(document).ready(function(){
-    console.log("Calling INERTIA.util.init");
     INERTIA.util.init();
+    INERTIA.EventAdminIndex.init();
 });
 
 
