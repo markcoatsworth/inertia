@@ -614,6 +614,9 @@ div.eventView div.youtube {
         position: static;
         width: 100%;
     }
+    div#footer {
+        width: 100%;
+    }
     div.column_wide {
         width: 100%;
     }
