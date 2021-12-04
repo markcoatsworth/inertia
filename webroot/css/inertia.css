@@ -57,13 +57,13 @@ h2 {
     color: #ccc;
     font-size: 32px;
     font-weight: bold;
-    margin: 10px 0 30px 0;
+    margin: 10px 0 20px 0;
     text-transform: uppercase;
 }
 
 h3 {
     color: #fff;
-    font-size: 20px;
+    font-size: 26px;
     margin: 0 0 40px 0;
     text-transform: uppercase;
 }
@@ -90,7 +90,7 @@ div#container {
 /*** LAYOUT ***/
 
 body {
-    background: #000 url('/img/body_background.gif') repeat;
+    background: #000 url('/img/body_background.jpg') repeat;
 }
 
 
@@ -274,16 +274,19 @@ div.message {
     background: #090909;
     border: 2px;
     border-color: #222;
-    color: #fff;
+    color: #fff !important;
     font-size: 20px;
-    margin-bottom: 15px;
+    margin: 20px 0;
     padding: 15px;
 }
 
 div.message.success {
-    background: #ccc;
+    background: #1f9d55;
 }
 
+div.message.error {
+    background: #cc1f1a;
+}
 
 /*** BUTTONS ***/
 
@@ -429,6 +432,7 @@ div#EventFlyerPreview {
 /*** EVENT LISTS ***/
 
 ul.events {
+    margin: 30px 0;
 }
 
 ul.events li {
@@ -438,12 +442,12 @@ ul.events li {
 ul.events li div.image {
     float: left;
     margin: 0 20px 0 0;
-    width: 200px;
+    width: 250px;
 }
 
 ul.events li div.info {
     float: left;
-    width: 420px;
+    width: 360px;
 }
 
 ul.events li div.info h3 {
@@ -495,14 +499,11 @@ ul.history li div.info p {
 /*** EVENT VIEW ***/
 
 div.eventView {
+    margin: 20px 0;
 }
 
 div.eventView div.buttons {
     margin: 0 0 25px 0;
-}
-
-div.eventView div.sharethis {
-    padding: 0 40px 0 0;
 }
 
 div.eventView div.image {
@@ -616,6 +617,10 @@ div.eventView div.youtube {
     }
     div#footer {
         width: 100%;
+    }
+    div.eventView div.image {
+        float: none;
+        margin: 0;
     }
     div.column_wide {
         width: 100%;

@@ -3,7 +3,7 @@
 <?php foreach($events as $event): ?>
     <li>
         <div class="image">
-            <?= $this->Html->link($this->Html->image('Events/tnails/'.$event->flyer), ['controller' => 'events', 'action' => 'view', $event->id], ['escape' => false]); ?>
+            <?= $this->Html->link($this->Html->image('Events/medium/'.$event->flyer), ['controller' => 'events', 'action' => 'view', $event->id], ['escape' => false]); ?>
         </div>
         <div class="info">
             <h3><?= $event->title ?></h3>

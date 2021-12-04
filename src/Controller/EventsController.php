@@ -51,11 +51,13 @@ class EventsController extends AppController
                 $eventData['flyer'] = "";
             }
             $event = $this->Events->patchEntity($event, $eventData);
-            if ($this->Events->save($event)) {
-                $this->Flash->success(__('This event has been saved.'));
-                return $this->redirect(['action' => 'index']);
+            if ($result = $this->Events->save($event)) {
+                $this->Flash->success(__('This event ('.$result->title.') has been saved.'));
+                return $this->redirect(['controller' => 'Events', 'action' => 'edit', $result->id]);
             }
-            $this->Flash->error(__('The event could not be saved. Please try again.'));
+            else {
+                $this->Flash->error(__('The event could not be saved. Please try again.'));
+            }
         }
         $this->set(compact('event'));
     }
@@ -100,10 +102,10 @@ class EventsController extends AppController
                 $smallImage->save('../webroot/img/Events/tnails/'.$newFlyerFile);
             }
             if ($this->Events->save($event)) {
-                $this->Flash->success('This event has been updated.');
+                $this->Flash->success('This event ('.$event->title.') has been updated.');
             }
             else {
-                $this->Flash->error('This event could not be updated. Please try again.');
+                $this->Flash->error('This event ('.$event->title.') could not be updated. Please try again.');
             }
         }
         $this->set(compact('event'));
@@ -121,12 +123,12 @@ class EventsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $event = $this->Events->get($id);
         if ($this->Events->delete($event)) {
-            $this->Flash->success(__('The event has been deleted.'));
+            $this->Flash->success(__('Event ('.$event->title.') has been deleted.'));
         } else {
-            $this->Flash->error(__('The event could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Event ('.$event->title.') could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' => 'Pages', 'action' => 'admin']);
     }
 
     public function history()
