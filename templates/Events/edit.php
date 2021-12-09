@@ -38,6 +38,10 @@
             <td><label>Tickets URL</label></td>
             <td><?= $this->Form->control('tickets_url', ['label' => false]) ?></td>
         </tr>
+        <tr>
+            <td><label>URL Slug</label><p>(Shortened title that appears in the event URL)</p></td>
+            <td><?= $this->Form->control('slug', ['label' => false]) ?></td>
+        </tr>
     </table>
 </fieldset>
 <?= $this->Form->button(__('Submit')) ?>

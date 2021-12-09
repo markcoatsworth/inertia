@@ -4,6 +4,9 @@
 namespace App\Controller;
 
 use Intervention\Image\ImageManager;
+use Cake\ORM\Table;
+use Cake\Utility\Text;
+use Cake\Event\EventInterface;
 
 class EventsController extends AppController
 {
@@ -15,9 +18,21 @@ class EventsController extends AppController
         $this->Authentication->addUnauthenticatedActions(['history', 'view']);
     }
 
+    public function beforeSave(\Cake\Event\EventInterface $event, $entity, $options)
+    {
+        if ($entity->isNew() && !$entity->slug) {
+            $sluggedTitle = Text::slug($entity->title);
+            // trim slug to maximum length defined in schema
+            $entity->slug = substr($sluggedTitle, 0, 191);
+        }
+    }
+
     public function view($id = null)
     {
-        $event = $this->Events->findById($id)->firstOrFail();
+        $event = $this->Events->findById(intval($id))->first();
+        if (!isset($event)) {
+            $event = $this->Events->findBySlug(strval($id))->first();
+        }
         $this->set(compact('event'));
     }
 
@@ -27,6 +42,9 @@ class EventsController extends AppController
         $event = $this->Events->newEmptyEntity();
         if ($this->request->is('post')) {
             $eventData = $this->request->getData();
+            // Add slug
+            $eventData['slug'] = substr(Text::slug($eventData['title']), 0, 191);
+            // Flyer image
             $flyer = $this->request->getData('flyer');
             if ($flyer != null && $flyer->getError() != UPLOAD_ERR_NO_FILE) {
                 $flyerFile = $flyer->getClientFilename();
@@ -65,9 +83,11 @@ class EventsController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->setLayout('admin');
-        $event = $this->Events->get($id, [
-            'contain' => [],
-        ]);
+
+        $event = $this->Events->findBySlug(intval($id))->first();
+        if (!isset($event)) {
+            $event = $this->Events->findById(strval($id))->first();
+        };
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eventData = $this->request->getData();
             $flyer = $this->request->getData('flyer');

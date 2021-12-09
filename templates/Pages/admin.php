@@ -34,9 +34,15 @@
                 <?= date('F j, Y', strtotime($event->date)); ?>
             </td>
             <td class="actions">
-                <?= $this->Html->link(__('View'), ['controller' => 'Events', 'action' => 'view', $event->id]) ?>
-                <?= $this->Html->link(__('Edit'), ['controller' => 'Events', 'action' => 'edit', $event->id]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Events', 'action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete event {0}?', $event->id)]) ?>
+                <?php if (isset($event->slug) && !empty($event->slug)): ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'Events', 'action' => 'view', $event->slug]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Events', 'action' => 'edit', $event->slug]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Events', 'action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete event {0}?', $event->title)]) ?>
+                <?php else: ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'Events', 'action' => 'view', $event->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Events', 'action' => 'edit', $event->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Events', 'action' => 'delete', $event->id], ['confirm' => __('Are you sure you want to delete event {0}?', $event->title)]) ?>
+                <?php endif ?>
             </td>
         </tr>
         <?php endforeach; ?>
