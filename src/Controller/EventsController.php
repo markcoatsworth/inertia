@@ -84,9 +84,9 @@ class EventsController extends AppController
     {
         $this->viewBuilder()->setLayout('admin');
 
-        $event = $this->Events->findBySlug(intval($id))->first();
+        $event = $this->Events->findBySlug(strval($id))->first();
         if (!isset($event)) {
-            $event = $this->Events->findById(strval($id))->first();
+            $event = $this->Events->findById(intval($id))->first();
         };
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eventData = $this->request->getData();
