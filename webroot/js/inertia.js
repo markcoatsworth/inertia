@@ -4,18 +4,19 @@
 }
 
 INERTIA.util = {
-    init: function(){
-        // TODO: Add check to see if these selectors exist
-        ClassicEditor
-            .create(document.querySelector('textarea'))
-            .catch(error => {
-                console.error(error);
-            });
-        ClassicEditor
-            .create(document.querySelector('#moreinfo'))
-            .catch(error => {
-                console.error(error);
-            });
+    init: function() {
+        if ($("textarea").length) {
+            ClassicEditor
+                .create(document.querySelector('textarea'))
+                .catch(error => {
+                    console.error(error);
+                });
+            ClassicEditor
+                .create(document.querySelector('#moreinfo'))
+                .catch(error => {
+                    console.error(error);
+                });
+        }
     }
 }
 
