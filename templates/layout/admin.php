@@ -66,7 +66,7 @@ $cakeDescription = 'Inertia Entertainment';
             <li><a href="/history">History</a></li>
             <li><a href="mailto:inertia@inertia-entertainment.com">Contact</a></li>
             <li><a href="https://www.facebook.com/pages/INERTIA-ENTERTAINMENT/6393274882" class="facebook" target="_blank"></a></li>
-            <li><a href="http://instagram.com/INERTIA_NOEL" class="instagram" target="_blank"></a></li>
+            <li><a href="http://instagram.com/inertia_entertainment" class="instagram" target="_blank"></a></li>
         </ul>
         <div class="clear"></div>   
     </div>
