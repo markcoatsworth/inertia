@@ -5,10 +5,10 @@
     float: none;
 }
 .column_narrow {
-    width: 220px;
+    width: 200px;
 }
 .column_wide {
-    width: 660px;
+    width: 650px;
 }
 .hidden {
     display: none;
@@ -228,7 +228,7 @@ div.admin_navigation {
 }
 
 ul.admin_navigation {
-    font-size: 13px;
+    font-size: 16px;
 }
 
 ul.admin_navigation li {
@@ -445,6 +445,10 @@ ul.events li div.image {
     width: 250px;
 }
 
+ul.events li div.image a:hover {
+    opacity: 0.5;
+}
+
 ul.events li div.info {
     float: left;
     width: 360px;
@@ -474,7 +478,7 @@ ul.history li {
 
 ul.history li div.image {
     height: 310px;
-    margin: 0 20px 10px 0;
+    margin: 0 15px 10px 0;
     width: 200px;
 }
 
