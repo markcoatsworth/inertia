@@ -43,7 +43,8 @@ class EventsController extends AppController
         if ($this->request->is('post')) {
             $eventData = $this->request->getData();
             // Add slug
-            $eventData['slug'] = substr(Text::slug($eventData['title']), 0, 191);
+            print "test 6789";
+            $eventData['slug'] = "testdatetime".substr(Text::slug($eventData['title']), 0, 191);
             // Flyer image
             $flyer = $this->request->getData('flyer');
             if ($flyer != null && $flyer->getError() != UPLOAD_ERR_NO_FILE) {

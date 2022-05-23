@@ -34,6 +34,13 @@
             <td><label>Tickets URL</label></td>
             <td><?= $this->Form->control('tickets_url', ['label' => false]) ?></td>
         </tr>
+        <tr>
+            <td><label>YouTube URL</label></td>
+            <td>
+                <?= $this->Form->control('youtube_url', ['label' => false]) ?>
+                <span class="description">Example: https://www.youtube.com/watch?v=JhiUacGzIg8</span>
+            </td>
+        </tr>
     </table>
 </fieldset>
 <?= $this->Form->button(__('Submit')) ?>

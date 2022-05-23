@@ -39,6 +39,20 @@
             <td><?= $this->Form->control('tickets_url', ['label' => false]) ?></td>
         </tr>
         <tr>
+            <td><label>YouTube URL</label></td>
+            <td>
+                <?= $this->Form->control('youtube_url', ['label' => false]) ?>
+                <span class="description">Example: https://www.youtube.com/watch?v=JhiUacGzIg8</span>
+                <?php
+                    if (isset($event->youtube_url) && !empty($event->youtube_url)) {
+                        $video_tokens = explode("=", $event->youtube_url);
+                        $video_id = $video_tokens[1];
+                        print("<iframe width=\"650\" height=\"366\" src=\"https://www.youtube.com/embed/".$video_id."\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>");
+                    }
+                 ?>
+            </td>
+        </tr>
+        <tr>
             <td><label>URL Slug</label><p>(Shortened title that appears in the event URL)</p></td>
             <td><?= $this->Form->control('slug', ['label' => false]) ?></td>
         </tr>
