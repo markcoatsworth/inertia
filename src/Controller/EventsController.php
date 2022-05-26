@@ -10,21 +10,26 @@ use Cake\Event\EventInterface;
 
 class EventsController extends AppController
 {
+    public function generateSlug($event) {
+        $slug = Text::slug($event['title']);
+        if (!empty($event['date']) && isset($event['date'])) {
+            $slug .= "-".date('Y-m-d', strtotime($event['date']));
+        }
+        if (!empty($event['city']) && isset($event['city'])) {
+            $slug .= "-".Text::slug($event['city']);
+        }
+        if (!empty($event['venue']) && isset($event['venue'])) {
+            $slug .= "-".Text::slug($event['venue']);
+        }
+        return $slug;
+    }
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
         $this->Authentication->addUnauthenticatedActions(['history', 'view']);
-    }
-
-    public function beforeSave(\Cake\Event\EventInterface $event, $entity, $options)
-    {
-        if ($entity->isNew() && !$entity->slug) {
-            $sluggedTitle = Text::slug($entity->title);
-            // trim slug to maximum length defined in schema
-            $entity->slug = substr($sluggedTitle, 0, 191);
-        }
     }
 
     public function view($id = null)
@@ -43,8 +48,7 @@ class EventsController extends AppController
         if ($this->request->is('post')) {
             $eventData = $this->request->getData();
             // Add slug
-            print "test 6789";
-            $eventData['slug'] = "testdatetime".substr(Text::slug($eventData['title']), 0, 191);
+            $eventData['slug'] = substr($this->generateSlug($eventData), 0, 191);
             // Flyer image
             $flyer = $this->request->getData('flyer');
             if ($flyer != null && $flyer->getError() != UPLOAD_ERR_NO_FILE) {
@@ -84,7 +88,6 @@ class EventsController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->setLayout('admin');
-
         $event = $this->Events->findBySlug(strval($id))->first();
         if (!isset($event)) {
             $event = $this->Events->findById(intval($id))->first();
