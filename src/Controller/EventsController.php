@@ -132,8 +132,9 @@ class EventsController extends AppController
                 $event = $this->Events->patchEntity($event, $eventData);
             }
 
-            if ($this->Events->save($event)) {
+            if ($result = $this->Events->save($event)) {
                 $this->Flash->success('This event ('.$event->title.') has been updated.');
+                return $this->redirect(['controller' => 'Events', 'action' => 'edit', $result->slug]);
             }
             else {
                 $this->Flash->error('This event ('.$event->title.') could not be updated. Please try again.');
