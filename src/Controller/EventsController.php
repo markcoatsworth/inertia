@@ -92,39 +92,46 @@ class EventsController extends AppController
         if (!isset($event)) {
             $event = $this->Events->findById(intval($id))->first();
         };
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eventData = $this->request->getData();
             $flyer = $this->request->getData('flyer');
+            if ($flyer != null && $flyer->getError() != UPLOAD_ERR_NO_FILE) {
+                // Did we just get a new image upload? If so, use that
+                $newFlyerFile = $flyer->getClientFilename();
+                if (!empty($newFlyerFile) && isset($newFlyerFile)) {
+                    $eventData['flyer'] = $newFlyerFile;
+                    $event = $this->Events->patchEntity($event, $eventData);
+                }
+                // Was there an existing file? If so, keep that and don't overwrite it
+                $oldFlyerFile = $event['flyer'];
+                if (!empty($oldFlyerFile) && isset($oldFlyerFile)) {
+                    $eventData['flyer'] = $oldFlyerFile;
+                    $event = $this->Events->patchEntity($event, $eventData);
+                }
+                // Image management
+                if (!empty($newFlyerFile) && isset($newFlyerFile)) {
+                    // Flyer image upload
+                    $fileobject = $this->request->getData('flyer');
+                    $uploadPath = '../uploads/';
+                    $destination = $uploadPath.$newFlyerFile;
+                    $fileobject->moveTo($destination);
 
-            // Did we just get a new image upload? If so, use that
-            $newFlyerFile = $flyer->getClientFilename();
-            if (!empty($newFlyerFile) && isset($newFlyerFile)) {
-                $eventData['flyer'] = $newFlyerFile;
+                    // Flyer image resizes
+                    $manager = new ImageManager(array('driver' => 'imagick'));
+                    $largeImage = $manager->make($destination)->widen(325);
+                    $largeImage->save('../webroot/img/Events/'.$newFlyerFile);
+                    $mediumImage = $manager->make($destination)->widen(250);
+                    $mediumImage->save('../webroot/img/Events/medium/'.$newFlyerFile);
+                    $smallImage = $manager->make($destination)->widen(200);
+                    $smallImage->save('../webroot/img/Events/tnails/'.$newFlyerFile);
+                }
+            }
+            else {
+                $eventData['flyer'] = "";
                 $event = $this->Events->patchEntity($event, $eventData);
             }
-            // Was there an existing file? If so, keep that and don't overwrite it
-            $oldFlyerFile = $event['flyer'];
-            if (!empty($oldFlyerFile) && isset($oldFlyerFile)) {
-                $eventData['flyer'] = $oldFlyerFile;
-                $event = $this->Events->patchEntity($event, $eventData);
-            }
-            // Image management
-            if (!empty($newFlyerFile) && isset($newFlyerFile)) {
-                // Flyer image upload
-                $fileobject = $this->request->getData('flyer');
-                $uploadPath = '../uploads/';
-                $destination = $uploadPath.$newFlyerFile;
-                $fileobject->moveTo($destination);
 
-                // Flyer image resizes
-                $manager = new ImageManager(array('driver' => 'imagick'));
-                $largeImage = $manager->make($destination)->widen(325);
-                $largeImage->save('../webroot/img/Events/'.$newFlyerFile);
-                $mediumImage = $manager->make($destination)->widen(250);
-                $mediumImage->save('../webroot/img/Events/medium/'.$newFlyerFile);
-                $smallImage = $manager->make($destination)->widen(200);
-                $smallImage->save('../webroot/img/Events/tnails/'.$newFlyerFile);
-            }
             if ($this->Events->save($event)) {
                 $this->Flash->success('This event ('.$event->title.') has been updated.');
             }
@@ -134,7 +141,7 @@ class EventsController extends AppController
         }
         $this->set(compact('event'));
     }
-    
+
      /**
      * Delete method
      *
