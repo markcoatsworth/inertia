@@ -11,15 +11,15 @@ use Cake\Event\EventInterface;
 class EventsController extends AppController
 {
     public function generateSlug($event) {
-        $slug = Text::slug($event['title']);
+        $slug = Text::slug(strtolower($event['title']));
         if (!empty($event['date']) && isset($event['date'])) {
             $slug .= "-".date('Y-m-d', strtotime($event['date']));
         }
         if (!empty($event['city']) && isset($event['city'])) {
-            $slug .= "-".Text::slug($event['city']);
+            $slug .= "-".Text::slug(strtolower($event['city']));
         }
         if (!empty($event['venue']) && isset($event['venue'])) {
-            $slug .= "-".Text::slug($event['venue']);
+            $slug .= "-".Text::slug(strtolower($event['venue']));
         }
         return $slug;
     }
