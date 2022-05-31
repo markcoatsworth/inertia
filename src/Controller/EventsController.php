@@ -24,6 +24,26 @@ class EventsController extends AppController
         return $slug;
     }
 
+    public function findByIdOrSlug($id = null) {
+        $event = null;
+        $event = $this->Events->findById(intval($id))->first();
+        if (!isset($event)) {
+            $event = $this->Events->findBySlug(strval($id))->first();
+        }
+        // If we still haven't found this event, look it up in the slugs table
+        if (!isset($event)) {
+            $slug = $this->Events->Slugs->find('all')->where(['slug' => $id])->first();
+            if (isset($slug)) {
+                $event_id = $slug['event_id'];
+                $event = $this->Events->findById($event_id)->first();
+            }
+        }
+        // TODO: Can we do a 401 redirect here if still no event found?
+        //if (!isset($event)) { }
+
+        return $event;
+    }
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
@@ -34,10 +54,7 @@ class EventsController extends AppController
 
     public function view($id = null)
     {
-        $event = $this->Events->findById(intval($id))->first();
-        if (!isset($event)) {
-            $event = $this->Events->findBySlug(strval($id))->first();
-        }
+        $event = $this->findByIdOrSlug($id);
         $this->set(compact('event'));
     }
 
@@ -88,10 +105,8 @@ class EventsController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->setLayout('admin');
-        $event = $this->Events->findBySlug(strval($id))->first();
-        if (!isset($event)) {
-            $event = $this->Events->findById(intval($id))->first();
-        };
+
+        $event = $this->findByIdOrSlug($id);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eventData = $this->request->getData();
@@ -153,7 +168,7 @@ class EventsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $event = $this->Events->get($id);
+        $event = $this->findByIdOrSlug($id);
         if ($this->Events->delete($event)) {
             $this->Flash->success(__('Event ('.$event->title.') has been deleted.'));
         } else {
