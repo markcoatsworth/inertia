@@ -111,8 +111,9 @@ class EventsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $eventData = $this->request->getData();
             $flyer = $this->request->getData('flyer');
+            // Look for an image upload
             if ($flyer != null && $flyer->getError() != UPLOAD_ERR_NO_FILE) {
-                // Did we just get a new image upload? If so, use that
+                // Was this upload a new image, different from the previous one? If so, use that
                 $newFlyerFile = $flyer->getClientFilename();
                 if (!empty($newFlyerFile) && isset($newFlyerFile)) {
                     $eventData['flyer'] = $newFlyerFile;
@@ -143,10 +144,13 @@ class EventsController extends AppController
                 }
             }
             else {
-                $eventData['flyer'] = "";
-                $event = $this->Events->patchEntity($event, $eventData);
+                // If there was a pre-existing flyer but no new upload, replace the file object in $eventData with the filename
+                if (isset($flyer)) {
+                    $eventData['flyer'] = $event['flyer'];
+                }
             }
 
+            $event = $this->Events->patchEntity($event, $eventData);
             if ($result = $this->Events->save($event)) {
                 $this->Flash->success('This event ('.$event->title.') has been updated.');
                 return $this->redirect(['controller' => 'Events', 'action' => 'edit', $result->slug]);
@@ -155,6 +159,7 @@ class EventsController extends AppController
                 $this->Flash->error('This event ('.$event->title.') could not be updated. Please try again.');
             }
         }
+
         $this->set(compact('event'));
     }
 
