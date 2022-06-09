@@ -3,10 +3,11 @@
 
 namespace App\Controller;
 
-use Intervention\Image\ImageManager;
+use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\Event\EventInterface;
 use Cake\ORM\Table;
 use Cake\Utility\Text;
-use Cake\Event\EventInterface;
+use Intervention\Image\ImageManager;
 
 class EventsController extends AppController
 {
@@ -39,7 +40,10 @@ class EventsController extends AppController
             }
         }
         // TODO: Can we do a 401 redirect here if still no event found?
-        //if (!isset($event)) { }
+        if (!isset($event)) { 
+            print_r($event);
+            throw new RecordNotFoundException("This event could not be found");
+        }
 
         return $event;
     }

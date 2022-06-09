@@ -29,7 +29,6 @@ $cakeDescription = 'Inertia Entertainment';
     <?= $this->Html->css(['reset', 'normalize.min', 'milligram.min', 'cake', 'inertia']) ?>
     <?= $this->Html->script(['jquery/jquery-1.5.min', 'jquery/jquery.pngFix.pack', 'inertia']) ?>
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-    <script src="/js/fckeditor/fckeditor.js"></script>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
